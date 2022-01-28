@@ -17,6 +17,10 @@ When you want the menu to appear simply include the following code in one of you
 @(await Component.InvokeAsync<NavbarViewComponent>())
 ```
 
+### Overriding the default menu html with your own
+
+Create a folder at Views/Shared/Components/Navbar in your primary Asp.net web project and copy over the [Default.cshtml](https://github.com/RoverCore/Navigation/blob/main/RoverCore.Navigation/Views/Shared/Components/Navbar/Default.cshtml) from this project to that directory.  Any customizations you make to Default.cshtml will be reflected on your website.
+
 ## Example Menu Configuration
 ```json
 {
