@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+	<Authors>Michael Tanczos</Authors>
+	<Company />
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<Description>Serviced is a simple lightweight library that handles service registrations for you.</Description>
+	<Version>1.0.0</Version>
+	<Product>RoverCore.Navigation</Product>
+	<RepositoryUrl>https://github.com/RoverCore/Navigation</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageProjectUrl>https://github.com/RoverCore/Navigation</PackageProjectUrl>
+	<PackageIcon>logo.png</PackageIcon>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+	</ItemGroup>
+
+</Project>
