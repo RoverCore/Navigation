@@ -8,8 +8,8 @@
 	<Authors>Michael Tanczos</Authors>
 	<Company />
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	<Description>Serviced is a simple lightweight library that handles service registrations for you.</Description>
-	<Version>1.0.1</Version>
+	<Description>RoverCore Navigation is a Razor Class Library that provides a service to load navigation menus from appsettings.json.</Description>
+	<Version>1.0.2</Version>
 	<Product>RoverCore.Navigation</Product>
 	<RepositoryUrl>https://github.com/RoverCore/Navigation</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
