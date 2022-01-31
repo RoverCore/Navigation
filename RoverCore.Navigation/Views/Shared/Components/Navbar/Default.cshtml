@@ -17,11 +17,13 @@
             {
                 if (dropdownItem.Type.ToLower() == "link")
                 {
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="@dropdownItem.Url">
-                            @dropdownItem.Text
-                        </a>
-                    </li>
+	                var target = !String.IsNullOrEmpty(dropdownItem.Target) ? $"target=\"{dropdownItem.Target}\"" : "";
+
+	                <li class="nav-item">
+		                <a class="dropdown-item" href="@dropdownItem.Url" @target>
+			                @dropdownItem.Text
+		                </a>
+	                </li>
                 }
                 else if (dropdownItem.Type.ToLower() == "dropdown")
                 {

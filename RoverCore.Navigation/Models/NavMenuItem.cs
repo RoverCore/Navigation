@@ -19,6 +19,9 @@ public class NavMenuItem
     [JsonPropertyName("Values")]
     public Dictionary<string, object>? Values { get; set; }
 
+    [JsonPropertyName("Target")]
+    public string? Target { get; set; }
+
     [JsonPropertyName("Roles")]
     public List<string>? Roles { get; set; }
 

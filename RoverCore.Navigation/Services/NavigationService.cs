@@ -86,14 +86,23 @@ public class NavigationService
                 // If the url is already set then we will use that as the link
                 if (!String.IsNullOrEmpty(item.Url)) continue;
 
-                // Check to see if this is an MVC link or a Page
-                if (!String.IsNullOrEmpty(item.Controller))
+                if (item.Type?.ToLower() == "link")
                 {
-                    item.Url = _link.GetPathByAction(httpContext, item.Action ?? "Index", item.Controller, item.Values);
+	                // Check to see if this is an MVC link or a Page
+	                if (!String.IsNullOrEmpty(item.Controller))
+	                {
+		                item.Url = _link.GetPathByAction(httpContext, item.Action ?? "Index", item.Controller, item.Values);
+	                }
+	                else if (!String.IsNullOrEmpty(item.Page))
+	                {
+		                item.Url = _link.GetPathByPage(httpContext, item.Page, item.Handler, item.Values);
+	                }
+
                 }
-                else if (!String.IsNullOrEmpty(item.Page)) 
+
+                if (item.Children?.Count > 0)
                 {
-                    item.Url = _link.GetPathByPage(httpContext, item.Page, item.Handler, item.Values);
+                    ResolveUrls(item.Children);
                 }
             }
         }
