@@ -2,10 +2,6 @@
 
 @model RoverCore.Navigation.Models.NavMenu
 
-@{
-    var nav_uniqid = 1;
-}
-
 @functions
 {
     void renderChildren(List<NavMenuItem>? items)
@@ -27,12 +23,14 @@
                 }
                 else if (dropdownItem.Type.ToLower() == "dropdown")
                 {
-                    var navid = Guid.NewGuid().ToString();
+                    var collapsenav = dropdownItem.Active ? "" : "collapsed";
+                    var shownav = dropdownItem.Active ? "show" : "";
+
                     <li class="nav-item dropdown">
-                        <a class="dropdown-item dropdown-toggle collapsed" href="#navbar-base" data-bs-toggle="collapse" data-bs-target="#nav_@navid" data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <a class="dropdown-item dropdown-toggle @collapsenav" href="#navbar-base" data-bs-toggle="collapse" data-bs-target="#@dropdownItem.Id" data-bs-auto-close="false" role="button" aria-expanded="false">
                             <span class="nav-link-title">@dropdownItem.Text</span>
                         </a>
-                        <div class="dropdown-nested collapse" id="nav_@navid">
+                        <div class="dropdown-nested collapse @shownav" id="@dropdownItem.Id">
                             <div class="dropdown-menu-columns">
                                 <div class="dropdown-menu-column">
                                     @{
@@ -69,14 +67,17 @@
                 }
                 else if (navitem.Type.ToLower() == "dropdown")
                 {
+                    var collapsenav = navitem.Active ? "" : "collapsed"; // collapsed
+                    var shownav = navitem.Active ? "show" : ""; // show
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle collapsed" href="#navbar-base" data-bs-toggle="collapse" data-bs-target="#nav_@nav_uniqid" data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle @collapsenav" href="#navbar-base" data-bs-toggle="collapse" data-bs-target="#@navitem.Id" data-bs-auto-close="false" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <i class="icon @navitem.Icon"></i>
                             </span>
                             <span class="nav-link-title">@navitem.Text</span>
                         </a>
-                        <div class="collapse" id="nav_@nav_uniqid">
+                        <div class="collapse @shownav" id="@navitem.Id">
                             <div class="dropdown-menu-columns">
                                 <div class="dropdown-menu-column">
                                     @{
@@ -87,7 +88,6 @@
                         </div>
                     </li>
                 }
-                nav_uniqid++;
             }
 
         }

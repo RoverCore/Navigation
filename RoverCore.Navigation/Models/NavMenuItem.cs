@@ -4,6 +4,12 @@ namespace RoverCore.Navigation.Models;
 
 public class NavMenuItem
 {
+    [JsonPropertyName("Id")] 
+    public string Id { get; set; } = "nav_" + Guid.NewGuid().ToString();
+    
+    [JsonPropertyName("Active")]
+    public bool Active { get; set; } 
+
     [JsonPropertyName("Text")]
     public string? Text { get; set; }
 

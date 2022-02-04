@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -70,14 +71,18 @@ public class NavigationService
     /// <summary>
     /// Converts the routing parts specified in the configuration into actual urls
     /// </summary>
-    private void ResolveUrls(List<NavMenuItem> items)
+    private bool ResolveUrls(List<NavMenuItem> items)
     {
-        var httpContext = _httpContextAccessor.HttpContext;
+        bool active = false;
 
+        var httpContext = _httpContextAccessor.HttpContext;
+        
         if (httpContext is null)
         {
             throw new Exception("HTTP Context is null when attempting to resolve urls");
         }
+
+        var currentPath = httpContext.Request.Path.ToString().ToLower();
 
         if (items?.Count > 0)
         {
@@ -98,14 +103,22 @@ public class NavigationService
 		                item.Url = _link.GetPathByPage(httpContext, item.Page, item.Handler, item.Values);
 	                }
 
+                    if (item.Url?.ToLower() == currentPath)
+                    {
+                        item.Active = true;
+                        active = true;
+                    }
                 }
 
                 if (item.Children?.Count > 0)
                 {
-                    ResolveUrls(item.Children);
+                    active = ResolveUrls(item.Children);
+                    item.Active = active;
                 }
             }
         }
+
+        return active;
     }
 
     /// <summary>
