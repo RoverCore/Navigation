@@ -9,7 +9,7 @@
 	<Company />
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<Description>RoverCore Navigation is a Razor Class Library that provides a service to load navigation menus from appsettings.json.</Description>
-	<Version>1.0.3</Version>
+	<Version>1.0.4</Version>
 	<Product>RoverCore.Navigation</Product>
 	<RepositoryUrl>https://github.com/RoverCore/Navigation</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>

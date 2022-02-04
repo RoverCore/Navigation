@@ -67,8 +67,8 @@
                 }
                 else if (navitem.Type.ToLower() == "dropdown")
                 {
-                    var collapsenav = navitem.Active ? "" : "collapsed"; // collapsed
-                    var shownav = navitem.Active ? "show" : ""; // show
+                    var collapsenav = navitem.Active ? "" : "collapsed"; 
+                    var shownav = navitem.Active ? "show" : ""; 
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @collapsenav" href="#navbar-base" data-bs-toggle="collapse" data-bs-target="#@navitem.Id" data-bs-auto-close="false" role="button" aria-expanded="false">
